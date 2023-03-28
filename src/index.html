@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Movie Recommendation System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <form id="searchForm">
+    <label for="query">Search for a TV show: </label>
+    <input type="text" id="query" name="query">
+    <button type="submit">Search</button>
+  </form>
+
+  <div class="suggestions-container">
+    <h2>Suggestions:</h2>
+    <ul></ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
