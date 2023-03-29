@@ -6,18 +6,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <form id="searchForm">
-    <label for="query">Search for a TV show: </label>
-    <input type="text" id="query" name="query">
-    <button type="submit">Search</button>
-  </form>
-
-  <div class="suggestions-container">
-    <h2>Suggestions:</h2>
-    <ul></ul>
+   
+  <div class="outer-box">
+     <h1 class="title">Search for a TV show: </h1>
+    <div class="container">
+      <form id="search-form">
+        <input type="search" placeholder="Search for TV shows...">
+        <div class="suggestions-container" id="suggestions-container">
+          <ul class="suggestions-list" id="suggestions-list"></ul>
+        </div>
+      </form>
+      <div id="recommendations-container"></div>
+    </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- تحميل ملف app.js -->
   <script src="app.js"></script>
 </body>
 </html>

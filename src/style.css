@@ -1,71 +1,111 @@
-    body {
-      display: flex;
-      flex-wrap: wrap;
+
+/* Reset */
+
+    .outer-box {
+      display: grid;
+      position: relative;
+      align-items: center;
       justify-content: center;
-      gap: 20px;
+      height: 33vh;
+    }
+
+    /* نمط CSS للحاوية الأولية */
+    .container {
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 4px;
+      box-shadow: 0 8px 16px rgb(31 106 191 / 58%);;
+    }
+
+    /* نمط CSS للعنصر form */
+    form {
+      position: relative;
+      margin-bottom: 15px;
+
+    }
+
+    /* نمط CSS لمدخل البحث */
+    input[type="search"] {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 18px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* نمط CSS لعنصر ul */
+    ul {
+      list-style: none;
       margin: 0;
+      padding: 0;
     }
 
-    .movie-container {
-      width: 300px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+    /* نمط CSS لعنصر li */
+    .suggestion-item {
+      background-color: #fff;
+      cursor: pointer;
       padding: 10px;
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      border: 1px solid #ccc;
+      border-top: none;
+      transition: all 0.3s ease-in-out;
     }
 
-    .movie-container img {
-      max-width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 5px;
+    /* نمط CSS للعنصر li الأول */
+    .suggestion-item:first-child {
+      border-top: 1px solid #ccc;
+    }
+
+    /* نمط CSS للحاوية التي تحتوي على الاقتراحات */
+    .suggestions-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* نمط CSS لتفاصيل العرض */
+    .show-details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    /* نمط CSS لصورة العرض */
+    .show-details img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
       margin-bottom: 10px;
     }
 
-    h2 {
-      margin-top: 30px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
+    /* نمط CSS لاسم العرض */
+    .show-details h3 {
       margin: 0;
+      margin-bottom: 10px;
+      font-size: 24px;
     }
 
-    .suggestion-details p {
-      margin: 3px 0;
+    /* نمط CSS للتفاصيل الأخرى */
+    .show-details p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: justify;
     }
 
-    .suggestion-details strong {
-      font-weight: bold;
-    }
-    
-    #searchForm {
-      text-align: center;
-      margin: 20px auto;
-    }
-
-    .suggestions-container {
-      margin-top: 30px;
-      display: none;
-    }
-
-    .suggestions-container ul li {
-      display: flex;
-      align-items: center;
-      margin: 10px;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .suggestions-container ul li img {
-      width: 100px;
-      margin-right: 20px;
-      border-radius: 5px;
-    }
-
-    .suggestion-details {
-      display: flex;
-      flex-direction: column;
-    }
+    .title{
+      margin-left: 26px;
+      color: #6c6c64;
+      font-family: math;
+      margin-bottom: -55px;
+     }
