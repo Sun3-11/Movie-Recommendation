@@ -144,6 +144,16 @@ function makeImages(shows) {
       rating.textContent = `IMDB Rating: ${movieDetails.imdbRating}/10`;
       details.appendChild(rating);
     }
+   if (movieDetails.imdbVotes) {
+      const votes = document.createElement('p');
+      votes.textContent = `IMDB Votes: ${movieDetails.imdbVotes}`;
+      details.appendChild(votes);
+    }
+   if (movieDetails.Released) {
+      const Released = document.createElement('p');
+      Released.textContent = `IMDB Year: ${movieDetails.Released}`;
+      details.appendChild(Released);
+    }
     if (movieDetails.Genre) {
       const genres = document.createElement('p');
       genres.textContent = `Genres: ${movieDetails.Genre}`;
