@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "@tweenjs/tween.js": "^18.6.4",
+    "apriori": "^1.0.7",
     "axios": "^1.3.4",
+    "dotenv": "^16.0.3",
     "physijs": "^1.0.4",
     "stats.js": "^0.17.0",
     "three": "^0.148.0"
