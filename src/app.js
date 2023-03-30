@@ -39,7 +39,7 @@ function showSuggestions(shows) {
     suggestionsList.appendChild(suggestionItem);
   });
 
-  // إظهار suggestionsContainer إذا كانت الأفكار غير فارغة ، وإلا فإنه يجب أن يتم إخفاؤه
+  // إظهار suggestionsContainer 
   if (shows.length > 0) {
     suggestionsContainer.style.display = 'block';
   } else {
