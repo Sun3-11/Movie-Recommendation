@@ -1,46 +1,52 @@
-//.ENV
-import dotenv from 'dotenv'
-dotenv.config()
 
-//
+//.ENV
+// import dotenv from 'dotenv'
+// dotenv.config()
+
+// //
 const searchForm = document.getElementById('search-form');
 const searchInput = document.querySelector('input[type="search"]');
 const suggestionsContainer = document.getElementById('suggestions-container');
 const suggestionsList = document.getElementById('suggestions-list');
 const recommendationsContainer = document.getElementById('recommendations-container');
 
-// دالة للاستعلام عن معلومات العروض باستخدام API
+//function for show info using omdbapi
 async function getShows(query) {
   const apiKey = process.env.APIKEY;
-  const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/${apiKey}/${query}`);
+  const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${query}&type=movie`);
   const data = await response.json();
-  console.log(data)
-  return data.results;
+  if (data && data.Search) {
+   console.log(data)
+    return data.Search;
+  } else {
+    return [];
+  }
 }
 
-// دالة لإظهار الاقتراحات في suggestionsList
-function showSuggestions(shows) {
-  // إزالة جميع العناصر السابقة من suggestionsList
+//function for show suggestions in suggestionsList
+function showSuggestions(movies) {
+  // Remove all previous items from suggestionsList
   while (suggestionsList.firstChild) {
     suggestionsList.removeChild(suggestionsList.firstChild);
   }
 
-  // إنشاء وإضافة العناصر الجديدة إلى suggestionsList
-  shows.forEach(show => {
+  // Create and add new items to suggestionsList
+  movies.forEach(movie => {
     const suggestionItem = document.createElement('li');
+    const imageSrc = movie.Poster === "N/A" ? 'https://via.placeholder.com/150' : movie.Poster;
     suggestionItem.classList.add('suggestion-item');
     suggestionItem.innerHTML = `
       <div class="suggestion-details">
-        <img class="img-details" src="${show.image}" alt="${show.title}">
-        <h3 class="title-details">${show.title}</h3>
+        <img class="img-details" src="${imageSrc}" alt="${movie.Title}">
+        <h3 class="title-details">${movie.Title}</h3>
       </div>
     `;
     suggestionItem.addEventListener('click', handleSuggestionClick);
     suggestionsList.appendChild(suggestionItem);
   });
 
-  // إظهار suggestionsContainer 
-  if (shows.length > 0) {
+  // Show suggestionsContainer
+  if (movies.length > 0) {
     suggestionsContainer.style.display = 'block';
   } else {
     suggestionsContainer.style.display = 'none';
@@ -52,7 +58,6 @@ const handleSearch = async (event) => {
   // منع تحميل الصفحة بعد النقر على زر إرسال
   event.preventDefault();
 
-  // استخراج قيمة مدخل البحث وتنظيفها
   const searchValue = searchInput.value.trim().toLowerCase();
   if (!searchValue) {
     return;
@@ -61,30 +66,45 @@ const handleSearch = async (event) => {
   // إخفاء suggestionsContainer
   suggestionsContainer.style.display = 'none';
 
-  // استعلام عن معلومات العروض باستخدام القيمة المدخلة
-  const shows = await getShows(searchValue);
+  if (searchValue.length > 2) { // فحص طول النص المدخل
+    // استعلام عن معلومات العروض باستخدام القيمة المدخلة
+    const shows = await getShows(searchValue);
 
-  // عرض التوصيات في recommendationsContainer
-  makeImages(shows);
+    makeImages(shows);
+  } else {
+    // استخراج الاقتراحات بهدف العرض للمستخدم
+    const movies = await getShows(searchValue);
+
+    showSuggestions(movies.slice(0, 5));
+  }
+
 };
+//   if (shows.length === 0) {
+//     const suggestions = await getShows('');
+//     console.log(`Entered Movie name is not matching with any movie from the dataset . Please check the below suggestions :\n ${suggestions.map(s => s.Title).join('\n')}`);
+//     return showSuggestions(suggestions);
+//   }
+
+//   makeImages(shows);
+// };
 
 // إضافة حدث input لمدخل البحث
 searchInput.addEventListener('input', async () => {
+
   // استخراج قيمة مدخل البحث وتنظيفها
   const searchValue = searchInput.value.trim().toLowerCase();
   if (!searchValue) {
     return;
   }
 
-  // استعلام عن معلومات العروض باستخدام القيمة المدخلة
-  const shows = await getShows(searchValue);
+  const movies = await getShows(searchValue);
 
-  // عرض النتائج في suggestionsList
-  showSuggestions(shows.slice(0, 5));
+  showSuggestions(movies.slice(0, 5));
 });
 
 // إنشاء دالة جديدة لمعالجة حدث النقر على الاقتراحات
 const handleSuggestionClick = async (event) => {
+
   // إخفاء suggestionsContainer
   suggestionsContainer.style.display = 'none';
 
@@ -98,42 +118,32 @@ const handleSuggestionClick = async (event) => {
   makeImages([shows[0]]);
 };
 
-
-async function getMovieDetails(title) {
-   const apiKey = process.env.KEY; // تغيير YOUR_API_KEY إلى مفتاح API الخاص بك
-  const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`);
-  const data = await response.json();
-  console.log(data)
-  return data;
-}
-
-
-// دالة لإنشاء عناصر HTML img وعرضها في recommendationsContainer
-function makeImages(shows) {
-  // إزالة جميع العناصر السابقة من recommendationsContainer
+  // Remove all previous items from recommendationsContainer
+function makeImages(movies) {
   while (recommendationsContainer.firstChild) {
     recommendationsContainer.removeChild(recommendationsContainer.firstChild);
   }
 
-  // عرض الصور لكل عرض في recommendationsContainer
- shows.forEach(async (show) => {
+  // Show images for each show in recommendationsContainer
+  movies.forEach(async (movie) => {
     const container = document.createElement('div');
     container.classList.add('show-container');
 
     const image = document.createElement('img');
+    const imageSrc = movie.Poster === "N/A" ? 'https://via.placeholder.com/150' : movie.Poster;
     image.classList.add('recommendation-image');
-    image.src = show.image ? show.image : '';
-    image.alt = show.title;
+    image.src = imageSrc;
+    image.alt = movie.Title;
     container.appendChild(image);
 
     const details = document.createElement('div');
     details.classList.add('show-details');
 
     const title = document.createElement('h3');
-    title.textContent = show.title;
+    title.textContent = movie.Title;
     details.appendChild(title);
 
-    const movieDetails = await getMovieDetails(show.title);
+    const movieDetails = await getMovieDetails(movie.Title);
     if (movieDetails.Rated) {
       const rated = document.createElement('p');
       rated.textContent = `Rated: ${movieDetails.Rated}`;
@@ -164,12 +174,20 @@ function makeImages(shows) {
       plot.textContent = `Plot: ${movieDetails.Plot}`;
       details.appendChild(plot);
     }
-
     container.appendChild(details);
 
     recommendationsContainer.appendChild(container);
   });
 }
+async function getMovieDetails(title) {
+  const apiKey = process.env.APIKEY;
+  const response = await fetch(`http://www.omdbapi.com/?apikey=${apiKey}&t=${title}`);
+  const data = await response.json();
+  console.log(data)
+  return data;
+}
 
-// إضافة حدث submit للنموذج للبحث عن عروض تلفزيونية
+//Execute the search
 searchForm.addEventListener('submit', handleSearch);
+
+//.........................................................................
