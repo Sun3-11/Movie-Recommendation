@@ -9,7 +9,6 @@
       height: 33vh;
     }
 
-    /* نمط CSS للحاوية الأولية */
     .container {
       max-width: 500px;
       width: 100%;
@@ -18,14 +17,12 @@
       box-shadow: 0 8px 16px rgb(31 106 191 / 58%);;
     }
 
-    /* نمط CSS للعنصر form */
     form {
       position: relative;
       margin-bottom: 15px;
 
     }
 
-    /* نمط CSS لمدخل البحث */
     input[type="search"] {
       width: 100%;
       padding: 10px 15px;
@@ -35,14 +32,12 @@
       transition: all 0.3s ease-in-out;
     }
 
-    /* نمط CSS لعنصر ul */
     ul {
       list-style: none;
       margin: 0;
       padding: 0;
     }
 
-    /* نمط CSS لعنصر li */
     .suggestion-item {
       background-color: #fff;
       cursor: pointer;
@@ -52,12 +47,10 @@
       transition: all 0.3s ease-in-out;
     }
 
-    /* نمط CSS للعنصر li الأول */
     .suggestion-item:first-child {
       border-top: 1px solid #ccc;
     }
 
-    /* نمط CSS للحاوية التي تحتوي على الاقتراحات */
     .suggestions-container {
       display: none;
       position: absolute;
@@ -71,7 +64,6 @@
       z-index: 1;
     }
 
-    /* نمط CSS لتفاصيل العرض */
     .show-details {
       display: flex;
       align-items: center;
@@ -80,7 +72,6 @@
       margin-top: 20px;
     }
 
-    /* نمط CSS لصورة العرض */
     .show-details img {
       width: 100%;
       max-width: 300px;
@@ -88,14 +79,12 @@
       margin-bottom: 10px;
     }
 
-    /* نمط CSS لاسم العرض */
     .show-details h3 {
       margin: 0;
       margin-bottom: 10px;
       font-size: 24px;
     }
 
-    /* نمط CSS للتفاصيل الأخرى */
     .show-details p {
       margin: 0;
       font-size: 16px;
