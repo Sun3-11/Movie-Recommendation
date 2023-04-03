@@ -9,8 +9,8 @@
         justify-items: center;
     }
 
-    
-    .container {
+
+ .container {
       max-width: 500px;
       width: 100%;
       padding: 20px;
@@ -18,15 +18,13 @@
       box-shadow: 0 8px 16px rgb(31 106 191 / 58%);;
     }
 
-   
+
     form {
       position: relative;
       margin-bottom: 15px;
 
     }
-
-    
-    input[type="search"] {
+   input[type="search"] {
       width: 100%;
       padding: 10px 15px;
       font-size: 18px;
@@ -41,9 +39,7 @@
       margin: 0;
       padding: 0;
     }
-
-   
-    .suggestion-item {
+  .suggestion-item {
       background-color: #fff;
       cursor: pointer;
       padding: 10px;
@@ -51,14 +47,10 @@
       border-top: none;
       transition: all 0.3s ease-in-out;
     }
-
-    
-    .suggestion-item:first-child {
+   .suggestion-item:first-child {
       border-top: 1px solid #ccc;
     }
-
-    
-    .suggestions-container {
+   .suggestions-container {
       display: none;
       position: absolute;
       top: 100%;
@@ -71,32 +63,25 @@
       z-index: 1;
     }
 
-    
-    .show-details {
+   .show-details {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       margin-top: 20px;
     }
-
-  
-    .show-details img {
+   .show-details img {
       width: 100%;
       max-width: 300px;
       height: auto;
       margin-bottom: 10px;
     }
-
-    
-    .show-details h3 {
+  .show-details h3 {
       margin: 0;
       margin-bottom: 10px;
       /* font-size: 24px; */
     }
-
-    
-    .show-details p {
+  .show-details p {
       margin: 0;
       font-size: 16px;
       line-height: 1.5;
