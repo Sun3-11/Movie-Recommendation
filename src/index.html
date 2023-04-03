@@ -2,23 +2,46 @@
   <meta charset="UTF-8">
   <title>Movie Recommendation System</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="slide.css">
+
 </head>
 <body>
-
+ <h1 class="title">Search for a TV show: </h1>
   <div class="outer-box">
-    <h1 class="title">Search for a TV show: </h1>
+   
     <div class="container">
       <form id="search-form">
-        <input type="search" placeholder="Search for TV shows..." id="search-input">
+        <input type="search" placeholder="Search for Movies..." id="search-input">
         <div class="suggestions-container" id="suggestions-container">
           <ul class="suggestions-list" id="suggestions-list"></ul>
         </div>
       </form>
       <div id="recommendations-container"></div>
+      
     </div>
   </div>
+      <button id="recommendButton">Get Recommendations</button>
+      <div id="recommended-list"></div>
+ 
 
+   <h1 class="recotitle">RECOMMENDATIONS</h1>
+ <hr>
+<div class="slider">
+ <div class="slides-container">
+
+  </div>
+  <div class="controls">
+    <button class="prev"><i class="fas fa-arrow-left">P</i></button>
+    <button class="next"><i class="fas fa-arrow-right">N</i></button>
+  </div>
+</div>
+
+
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script  src="app.js"></script>
+  <script  src="slide.js"></script>
+
 
 </body>
 </html>
