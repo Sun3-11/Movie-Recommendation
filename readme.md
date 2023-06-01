@@ -1,4 +1,4 @@
-# Three.js Journey
+# Movie-Recommendation
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
